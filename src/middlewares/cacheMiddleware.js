@@ -14,13 +14,13 @@ module.exports = {
             const filmFromMem = await memCacheService.getMemCache(modTitle);
 
             if (filmFromMem) {
-                return res.status(200).json(filmFromMem);
+                return res.status(HttpStatusCode.OK).json(filmFromMem);
             }
 
             const filmFromRedis = await redisCacheService.getRedisCache(modTitle);
 
             if (filmFromRedis) {
-                return res.status(200).json(filmFromRedis);
+                return res.status(HttpStatusCode.OK).json(filmFromRedis);
             }
 
             next();
