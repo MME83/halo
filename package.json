@@ -1,0 +1,27 @@
+{
+  "name": "halo-lab",
+  "version": "1.0.0",
+  "description": "app with cached data using memory - redis - postgresql",
+  "main": "app.js",
+  "scripts": {
+    "start": "node src/server",
+    "test": "test"
+  },
+  "author": "mme83",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.2",
+    "ioredis": "^4.28.2",
+    "node-cache": "^5.1.2",
+    "pg": "^8.7.1",
+    "swagger-ui-express": "^4.3.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.5.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-node": "^11.1.0"
+  }
+}

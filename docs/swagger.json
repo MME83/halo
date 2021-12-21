@@ -1,0 +1,162 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "films API Documentation",
+        "version": "0.0.1",
+        "description": "Simple films Api Documentation with data caching, using: node.js, express.js, external PostgreSQL, internal node memory and internal Redis server"
+    },
+    "tags": [
+        {
+            "name": "Film",
+            "description": "Operations with films"
+        }
+    ],
+    "paths": {
+        "/film": {
+            "get": {
+                "tags": [
+                    "Film"
+                ],
+                "description": "Get all films from external db postgreSQL",
+                "operationId": "getAllFilms",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                                "$ref": "#/definitions/FilmsSchema"
+                        }
+                    },
+                    "404": {
+                        "description": "Films not found",
+                        "schema": {
+                            "$ref": "#/definitions/NoFilmErrorSchema"
+                        }
+                    }
+                }
+            }
+        },
+        "/film/{title}": {
+            "get": {
+                "tags": [
+                    "Film"
+                ],
+                "description": "Get film by title from node-memory|redis-server|db-postgesql",
+                "operationId": "getFilm",
+                "parameters": [
+                    {
+                        "name": "title",
+                        "in": "path",
+                        "type": "string",
+                        "description": "film title",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/FilmSchema"
+                        }
+                    },
+                    "404": {
+                        "description": "Film not found",
+                        "schema": {
+                            "$ref": "#/definitions/NoFilmErrorSchema"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "FilmsSchema": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/FilmSchema"
+            }
+        },
+        "FilmSchema": {
+            "type": "object",
+            "properties": {
+                "film_id": {
+                    "description": "film id",
+                    "type": "integer",
+                    "example": 123
+                },
+                "title": {
+                    "description": "film title",
+                    "type": "string",
+                    "example": "Academy Dinosaur"
+                },
+                "description": {
+                    "description": "film description",
+                    "type": "string",
+                    "example": "A Boring Story of a Teacher And a Monkey who must Succumb a Forensic Psychologist in A Jet Boat"
+                },
+                "release_year": {
+                    "description": "the year of film release",
+                    "type":"number",
+                    "example": "2016"
+                },
+                "language_id": {
+                    "description": "the year of film release",
+                    "type":"integer",
+                    "example": "1"
+                },
+                "rental_duration": {
+                    "description": "the rental duration",
+                    "type":"integer",
+                    "example": "5"
+                },
+                "rental_rate": {
+                    "description": "rental rate",
+                    "type": "string",
+                    "example": "0.99"
+                },
+                "length": {
+                    "description": "length",
+                    "type": "integer",
+                    "example": "161"
+                },
+                "replacement_cost": {
+                    "description": "replacement cost in US Dollars",
+                    "type": "string",
+                    "example": "12.99"
+                },
+                "rating": {
+                    "description": "rating",
+                    "type": "string",
+                    "example": "PG"
+                },
+                "last_update": {
+                    "description": "time of last update",
+                    "type": "string",
+                    "format": "date-time",
+                    "example": "2013-05-26T11:50:58.951Z"
+                },
+                "special_features": {
+                    "description": "Array of special features",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "uniqueItems": true,
+                    "example": ["feature_1", "feature_2", "feature_n"]
+                },
+                "fulltext": {
+                    "description": "some text",
+                    "type": "string",
+                    "example": "'alamo':1 'bore':4 'butler':8 'cat':11 'chef':17 'convent':21 'epistl':5 'fight':14 'must':13 'mysql':20 'pastri':16 'videotap':2"
+                }
+            }
+        },
+        "NoFilmErrorSchema": {
+            "properties": {
+                "message": {
+                    "type": "string",
+                    "example": "No film found"
+                }
+            }
+        }
+    }
+}
