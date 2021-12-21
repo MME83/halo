@@ -5,7 +5,7 @@
 ## Prerequisites
 - Git - [Download & Install Git](https://git-scm.com/downloads).
 - Node.js - [Download & Install Node.js](https://nodejs.org/en/download/) and the npm package manager.
-- PostgreSQL external - [Create free account](https://www.elephantsql.com/), [login, create new Instance, openIt and copy details](https://customer.elephantsql.com/instance).
+- PostgreSQL external - [1. Create free account](https://www.elephantsql.com/), [2. login, create new Instance, openIt and copy details](https://customer.elephantsql.com/instance).
 - pgAdmin 4 - [download and install pgAdmin](https://www.pgadmin.org/download/), connect to your BD using Instance details.
 - sample database [download and unzip sample PostgreSQL database](https://www.postgresqltutorial.com/wp-content/uploads/2019/05/dvdrental.zip).
 - restore extracted database `dvdrental.tar`: open pgAdmin 4, go to connected external db and restore it with extracted file. 
