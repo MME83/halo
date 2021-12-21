@@ -1,7 +1,7 @@
 {
   "name": "halo-lab",
   "version": "1.0.0",
-  "description": "app with cached data using memory - redis - postgresql",
+  "description": "app that cached data using memory, redis, postgresql",
   "main": "app.js",
   "scripts": {
     "start": "node src/server",
